@@ -28,15 +28,15 @@ public class MemberDao {
 			}
 			System.out.println("SQL : " + query);
 			rs = stmt.executeQuery(query);
-			rs.last();
-			System.out.println("rs.getRow() : " + rs.getRow());
+			rs.last(); // last() : 포인터를 제일 끝으로 이동
+			System.out.println("rs.getRow() : " + rs.getRow()); // getRow() : 포인터가 이동한만큼 몇개의 행이 지났는지 개수를 셈
 
 			if (rs.getRow() == 0) {
 				System.out.println("0 row selected.....");
 			} else {
 				System.out.println(rs.getRow() + " rows selected.....");
-				rs.previous();
-				while (rs.next()) {
+				rs.previous(); // previous() : 포인터를 이전에 있던 위치로 이동
+				while (rs.next()) { // next() : 포인터를 다음칸으로 이동
 					String empno = rs.getString("empno");
 					String ename = rs.getString("ename");
 					int sal = rs.getInt("sal");
